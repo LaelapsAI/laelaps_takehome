@@ -125,25 +125,27 @@ Deliverables
 
 # Submission instructions
 
-1. Create your solution
+1. **Create your solution**
 
-   - Use this repository as a template (or fork/clone).
-   - Implement changes on a branch named `feature/takehome`.
+   - Click "Use this template" to create a new repository in your GitHub account
+   - Name it something like `laelaps-takehome-[yourname]`
+   - Create a branch named `feature/takehome` for your work
 
-2. What to include
+2. **What to include**
 
-   - Completed code for `ros2-bridge`, `backend-node`, and `frontend`.
-   - Updated `README.md` with exact run instructions.
-   - Completed `DESIGN.md`.
-   - Screenshots or a short GIF showing the UI and a successful dispatch flow.
+   - Completed code for `ros2-bridge`, `backend-node`, and `frontend`
+   - Updated `README.md` with exact run instructions
+   - Completed `DESIGN.md`
+   - Screenshots or a short GIF showing the UI and a successful dispatch flow
 
-3. How to deliver
+3. **How to submit**
 
-   - Push your branch to a GitHub repo (public or private).
-   - Open a PR and add a short description of what you implemented and trade-offs.
-   - Share the repo link with me.
+   - Keep your repo **private** and add `rokas-bendikas` as a collaborator.
+   - Create a PR from `feature/takehome` to `main` within your own repo
+   - Email the repository URL and PR link
 
-4. Helpful notes
-   - Prefer small, focused commits with clear messages.
-   - Do not include secrets or credentials.
-   - If something is intentionally incomplete, state it clearly in the PR and DESIGN.md.
+4. **Helpful notes**
+   - Do NOT fork this repository (prevents other candidates from seeing your work)
+   - Use "Use this template" instead of forking
+   - Prefer small, focused commits with clear messages
+   - If something is intentionally incomplete, state it clearly in the PR description and DESIGN.md
