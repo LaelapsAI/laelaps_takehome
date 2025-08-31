@@ -1,0 +1,7 @@
+rtsp: yes
+hls: yes
+webrtc: yes
+api: yes
+
+paths:
+  all:
