@@ -74,9 +74,13 @@ services:
       - ros2-bridge
 
   frontend:
+    platform: linux/arm64
     build: ./frontend
     container_name: frontend
     ports:
-      - "8082:80"
+      - "3000:3000"
     depends_on:
       - backend-node
+    volumes:
+      - ./frontend:/app:rw
+      - /app/node_modules

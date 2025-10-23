@@ -1,7 +1,13 @@
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Copy static frontend
-COPY index.html /usr/share/nginx/html/index.html
+WORKDIR /app
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY package.json package-lock.json* ./
+RUN npm ci || npm install
+
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED=1
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

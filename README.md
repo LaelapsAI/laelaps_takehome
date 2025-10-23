@@ -14,7 +14,7 @@ What’s already in the repo
 - Skeletons for the three services:
   - `ros2-bridge/` — FastAPI app (`app.py`) and a Dockerfile. The bridge currently contains placeholders where ROS2 logic should be implemented.
   - `backend-node/` — minimal Node.js app (`src/index.js`) with TODOs; package.json and a Dockerfile are present.
-  - `frontend/` — simple static UI (`index.html`) and a Dockerfile served by nginx.
+  - `frontend/` — Next.js app (App Router) with a Dockerfile. The Next server proxies API calls to the backend via rewrites defined in `frontend/next.config.ts`.
   - `video/` — configuration files for video streaming services (e.g., MediaMTX, FFmpeg).
 - A `docker-compose.yml` that builds the three services (and a few helper services in some branches). Prefer using compose for the canonical dev environment.
 
@@ -94,7 +94,7 @@ How to run (recommended)
 - Services and ports (compose builds these):
   - ros2-bridge → http://localhost:8081
   - backend-node → http://localhost:8080
-  - frontend → http://localhost:8082 (served by nginx in the container)
+  - frontend → http://localhost:3000 (Next.js)
   - camera feed → http://localhost:8889/cam/ (RTSP + WebRTC via MediaMTX)
 
 Development tips
@@ -107,7 +107,11 @@ Development tips
   npm run dev
   ```
   The backend will try to call the bridge at `http://localhost:8081` when running locally.
-- Frontend MUST be implemented and can be edited directly in `frontend/index.html` or replaced with a small build pipeline (Vite/React) if you prefer.
+- Frontend runs on Next.js. Edit files under `frontend/src/app` and related components; Docker Compose mounts the source for hot reload at `http://localhost:3000`.
+- The Next.js server proxies the backend via rewrites (see `frontend/next.config.ts`):
+  - `/status` → `http://backend-node:8080/status`
+  - `/event` → `http://backend-node:8080/event`
+  - `/events/:id/assign` → `http://backend-node:8080/events/:id/assign`
 
 What we evaluate
 
